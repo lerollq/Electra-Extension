@@ -1,11 +1,20 @@
 var data = null;
+var dataEth = null
+var $currentWindow;
 
 $(function () {
-  $("#moreData").toggle();
+  initApp();
   addEventListener();
-  setData();
   getMyWallet();
 });
+
+function initApp(){
+  $("#moreData").toggle();
+  $currentWindow = $("#Statistics");
+  fetchData();
+  setData();
+  setColorChanges();
+ }
 
 function getJson(url) {
  return JSON.parse($.ajax({
@@ -20,13 +29,14 @@ function getJson(url) {
  }).responseText);
 }
 
-  function setData()
-  {
+  function fetchData(){
       data = getJson("https://api.coinmarketcap.com/v1/ticker/electra/");
       dataEth = getJson("https://api.coinmarketcap.com/v1/ticker/ethereum/");
+  }
 
+  function setData()
+  {
       $("#rank").text(data[0]['rank']);
-      var ethPrice = 
       $("#ethPrice").text((parseFloat(data[0]['price_usd'])/parseFloat(dataEth[0]['price_usd'])).toFixed(8));
       $("#usdPrice").text("$"+parseFloat(data[0]['price_usd']).toFixed(6).toLocaleString("en-US"));
       $("#marketCap").text("$"+parseFloat(data[0]['market_cap_usd']).toLocaleString("en-US"));
@@ -38,11 +48,10 @@ function getJson(url) {
       $("#change1h").text(data[0]['percent_change_1h'] + " %");
       $("#change24h").text(data[0]['percent_change_24h']+ " %");
       $("#change7d").text(data[0]['percent_change_7d']+ " %");
-      setColor();
   }
 
 
-  function setColor()
+  function setColorChanges()
   {
       if (parseFloat(data[0]['percent_change_1h']) < 0)
         $("#change1h").addClass("price_down");
@@ -150,30 +159,20 @@ function getCookie(cname) {
 
 function displayCurrent(current)
 {
+  $currentWindow.hide();
   switch(current){
     case "wallet-window":
-      $("#Statistics").hide();
-      $("#Exchanges").hide();
-      $("#Info").hide();
-      $("#Wallet").show();
+     $currentWindow = $("#Wallet");
       break;
     case "stats-window":
-      $("#Wallet").hide();
-      $("#Exchanges").hide();
-      $("#Info").hide();
-      $("#Statistics").show();
+     $currentWindow =  $("#Statistics");
       break;
     case "exchange-window":
-      $("#Statistics").hide();
-      $("#Wallet").hide();
-      $("#Info").hide();
-      $("#Exchanges").show();
+      $currentWindow =  $("#Exchanges");
       break;
-      case "info-window":
-      $("#Statistics").hide();
-      $("#Wallet").hide();
-      $("#Exchanges").hide();
-      $("#Info").show();
+    case "info-window":
+      $currentWindow =  $("#Info");
       break;
   }
+  $currentWindow.show();
 }
