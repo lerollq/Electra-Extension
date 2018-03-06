@@ -78,14 +78,6 @@
 
 	.gradient {
 		background: #710098;
-/*		background: rgba(10,33,166,1);
-		background: -moz-linear-gradient(left, rgba(10,33,166,1) 0%, rgba(198,104,242,1) 100%);
-		background: -webkit-gradient(left top, right top, color-stop(0%, rgba(10,33,166,1)), color-stop(100%, rgba(198,104,242,1)));
-		background: -webkit-linear-gradient(left, rgba(10,33,166,1) 0%, rgba(198,104,242,1) 100%);
-		background: -o-linear-gradient(left, rgba(10,33,166,1) 0%, rgba(198,104,242,1) 100%);
-		background: -ms-linear-gradient(left, rgba(10,33,166,1) 0%, rgba(198,104,242,1) 100%);
-		background: linear-gradient(to right, rgba(10,33,166,1) 0%, rgba(198,104,242,1) 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a21a6', endColorstr='#c668f2', GradientType=1 );*/
 	}
 
 	.footer {
