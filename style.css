@@ -237,3 +237,12 @@
 	.price_up {
 		color:green;
 	}
+
+	a:visited {
+		color: #710098;
+	}
+
+	a {
+		text-decoration: none;
+		color: #710098;
+	}
