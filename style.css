@@ -1,0 +1,247 @@
+	body {
+		position: relative;
+		width:500px;
+		margin: 0;
+		border-radius: 6px;
+		background-color: #F5F5F5;
+		padding: 10px;
+	}
+
+	.container {
+		position: relative;
+		display: flex;
+		align-content: space-between;
+		margin-bottom: 15px;
+	}
+
+	.box{
+		margin:0 auto;
+		border-radius:5px;
+		width: 30%;
+		height:100px;
+		background-color: white;
+	}
+
+	.box-large{
+		margin:0 auto;
+		border-radius:5px;
+		width: 80%;
+		height:100px;
+		background-color: white;
+	}
+
+	.margin-content {
+		margin:0 auto;
+	}
+
+	.seeMore{
+		background:url(/img/plus-button.svg) no-repeat;
+		transition: all .2s ease-in-out;
+		cursor: pointer;
+		border:none;
+		margin:0 auto;
+		width: 30px;
+		height:30px;
+	}
+
+	.seeMore:hover{
+		transform: scale(1.2); 
+	}
+
+	.change {
+		  background:url(/img/minus-button.svg) no-repeat;
+	}
+
+	.header-box {
+		height:25px;
+		border-top-right-radius:5px;
+		border-top-left-radius:5px;
+ 		display: flex;
+ 		justify-content: center;
+    	align-items: center;
+		font-family: 'Montserrat', sans-serif;
+		font-weight: bold;
+		font-size: 16px;
+	    color: white;
+		
+	}
+
+	.content-box {
+		height:75px;
+		display: flex;
+ 		justify-content: center;
+    	align-items: center;
+		font-weight: 900;
+		font-size: 18px;
+	    color: black;
+	}
+
+	.gradient {
+		background: #710098;
+/*		background: rgba(10,33,166,1);
+		background: -moz-linear-gradient(left, rgba(10,33,166,1) 0%, rgba(198,104,242,1) 100%);
+		background: -webkit-gradient(left top, right top, color-stop(0%, rgba(10,33,166,1)), color-stop(100%, rgba(198,104,242,1)));
+		background: -webkit-linear-gradient(left, rgba(10,33,166,1) 0%, rgba(198,104,242,1) 100%);
+		background: -o-linear-gradient(left, rgba(10,33,166,1) 0%, rgba(198,104,242,1) 100%);
+		background: -ms-linear-gradient(left, rgba(10,33,166,1) 0%, rgba(198,104,242,1) 100%);
+		background: linear-gradient(to right, rgba(10,33,166,1) 0%, rgba(198,104,242,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a21a6', endColorstr='#c668f2', GradientType=1 );*/
+	}
+
+	.footer {
+		height:35px;
+		border-radius: 5px;
+		bottom: 0;
+		width: 100%;
+    	line-height: 35px;
+	}
+
+	 ul {
+    	list-style-type: none;
+    	margin: 0;
+    	padding: 0;
+    	overflow: hidden;
+	}
+
+	#social-box {
+		padding: 20px;
+	}
+
+	#social-box ul {
+		display: flex;
+		align-content: center;
+		justify-content: space-between;
+	 	list-style-type: none;
+    	margin: 0;
+    	padding: 0;
+    	overflow: hidden;		
+	}
+	 #social-box ul li  {
+		font-size: 26px;
+		font-weight: 900;
+		cursor: pointer;
+		transition: all .2s ease-in-out;
+	}
+
+	 #social-box ul li:hover  {
+		font-size: 30px;
+	}
+
+	 #footer ul li  {
+		color: white;
+		margin:0 6px;
+		font-size: 18px;
+		font-weight: 900;
+		font-family: 'Montserrat', sans-serif;
+		text-align: center;
+	}
+
+
+
+	#footer  ul li img {
+    	vertical-align: middle;
+	}
+
+	#footer ul li i {
+		vertical-align: middle;
+		font-size: 20px;
+		margin:0 10px;
+		cursor: pointer;
+	}
+
+	#footer ul li i:hover {
+		font-size: 22px;
+	}
+
+	.left {
+		float:left;
+	}
+
+	.right {
+		float:right;
+	}
+
+	.icon-white { 
+	 -webkit-filter: grayscale(100%) brightness(5);
+  		filter: grayscale(100%) brightness(5);
+	}
+
+	#header {
+				border-radius: 5px;
+	}
+
+	#header ul {
+		position: relative;
+		display: flex;
+		margin-bottom: 15px; 
+	}
+
+	#header ul li {
+		width: 33%;
+		text-align: center;
+		cursor: pointer;
+		margin:1px;
+		font-size: 18px;
+		font-weight: 900;
+		font-family: 'Montserrat', sans-serif;
+		text-align: center;
+    	height: 35px;
+    	line-height: 35px;
+    	color: white;
+    	transition: all .2s ease-in-out;
+	}
+
+		#header ul li:hover {
+			font-size: 20px;
+			opacity: 0.8;
+		}
+
+	.border-right {
+		border-right: 2px solid #F5F5F5;
+	}
+	.border-left {
+		border-left: 2px solid #F5F5F5;
+	}
+
+	.hide {
+		display: none;
+	}
+
+	#inputDonate {
+		width: 80%;
+		text-align: center;
+	}
+
+	.small-text {
+		font-size: 12px;
+		font-weight: 600;
+	}
+
+	input[type=text], select {
+    	padding: 5px 10px;
+    	margin: 8px 0;
+    	display: inline-block;
+    	border: 1px solid #ccc;
+    	border-radius: 4px;
+    	box-sizing: border-box;
+	}
+
+	input[type=submit] {
+		transition: all .2s ease-in-out;
+    	color: white;
+    	padding: 5px 10px;
+    	border: none;
+    	border-radius: 4px;
+    	cursor: pointer;
+	}
+
+	input[type=submit]:hover {
+    	font-size: 14px;
+	}
+
+	.price_down {
+		color:red;
+	}
+	.price_up {
+		color:green;
+	}

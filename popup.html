@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Electra</title>
+      <script src="/js/jquery-3.3.1.min.js"></script>
+      <script src="/js/jquery-ui.js"></script>
+    <script src="/js/popup.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
+  </head>
+  <body>
+    <div id="header" class="gradient">
+      <ul>
+        <li id="stats-window" class="border-right">Statistics</li>
+        <li id="wallet-window">Wallet</li>
+        <li id="exchange-window" class="border-left">Exchanges</li>
+      </ul>
+    </div>
+    <div id="Statistics">
+      
+      <div class="container">
+      <div class="box">
+        <div class="header-box gradient">USD</div>
+        <div id="usdPrice" class="content-box"></div>
+      </div>
+      <div class="box">
+        <div class="header-box gradient">BTC</div>
+        <div id="btcPrice" class="content-box"></div>
+      </div>
+      <div class="box">
+        <div class="header-box gradient">ETH</div>
+        <div id="ethPrice" class="content-box"></div>
+      </div>
+      </div>
+      <div class="container">
+        <div class="box">
+          <div class="header-box gradient">Change 1h</div>
+          <div id="change1h" class="content-box"></div>
+        </div>
+        <div class="box">
+          <div class="header-box gradient">Change 24h</div>
+          <div id="change24h" class="content-box"></div>
+        </div>
+        <div class="box">
+          <div class="header-box gradient">Change 7d</div>
+          <div id="change7d" class="content-box"></div>
+        </div>
+      </div>
+      <div class="container" id="moreData">
+      <div class="box">
+        <div class="header-box gradient">Rank</div>
+        <div id="rank" class="content-box"></div>
+      </div>
+      <div class="box">
+        <div class="header-box gradient">Volume (24h)</div>
+        <div id="volume24" class="content-box"></div>
+      </div>
+      <div class="box">
+        <div class="header-box gradient">Supply</div>
+        <div id="circulatingSupply" class="content-box"></div>
+      </div>
+      </div>
+      <div class="container">
+      <div class="seeMore" id="more">
+      </div>
+      </div>
+    </div>
+    <div id="Wallet" class="hide">
+      <div class="container">
+        <div class="box">
+          <div class="header-box gradient">Electra</div>
+          <div id="ecaAmount" class="content-box"></div>
+        </div>
+        <div class="box">
+          <div class="header-box gradient">Price (USD)</div>
+          <div id="ecaPriceUSD" class="content-box"></div>
+        </div>
+        <div class="box">
+          <div class="header-box gradient">Price (BTC)</div>
+          <div id="ecaPriceBTC" class="content-box"></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="box-large">
+          <div class="header-box gradient">Add Transaction</div>
+            <div class="content-box">
+              <label class="margin-content">Enter quantity</label>
+              <input class="margin-content" type="text" id="inputEcaAmount" name="">
+              <input class="margin-content gradient" value="Save" type="submit" id="submitWallet">
+            </div>
+        </div>
+      </div>
+    </div>
+    <div id="Exchanges" class="hide">
+      <div class="container">
+        <div class="box">
+          <div class="header-box gradient">Cryptobridge</div>
+          <div class="content-box">
+            <ul>
+              <li><a href="https://wallet.crypto-bridge.org/market/BRIDGE.ECA_BRIDGE.BTC" target="_blank">ECA/BTC</a></li>
+              <li><a href="https://wallet.crypto-bridge.org/market/BRIDGE.ECA_BRIDGE.LTC" target="_blank">ECA/LTC</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="box">
+          <div class="header-box gradient">Coinfalcon</div>
+          <div class="content-box">
+            <ul>
+              <li><a href="https://coinfalcon.com/trading_view/ECA-BTC" target="_blank">ECA/BTC</a></li>
+              <li><a href="https://coinfalcon.com/trading_view/ECA-ETH" target="_blank">ECA/ETH</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="box">
+          <div class="header-box gradient">Coinhouse</div>
+          <div class="content-box">
+            <ul>
+              <li><a href="https://coinhouse.eu/markets/ecabtc" target="_blank">ECA/BTC</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="box">
+          <div class="header-box gradient">Fatbtc</div>
+          <div class="content-box">
+            <ul>
+              <li><a href="https://www.fatbtc.com/" target="_blank">ECA/ETH</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="Info" class="hide">
+      <div class="container">
+        <div class="box-large">
+            <div class="header-box gradient">Social media</div>
+            <div id="social-box">
+              <ul>
+                <li id="btn-discord"><i class="icon-discord"></i></li>
+                <li id="btn-twitter"><i class="icon-twitter"></i></li>
+                <li id="btn-telegram"><i class="icon-telegram"></i></li>
+                <li id="btn-facebook"><i class="icon-facebook"></i></li>
+                <li id="btn-instagram"><i class="icon-instagram"></i></li>
+                <li id="btn-website"><i class="icon-website"></i></li>
+              </ul>
+            </div>
+          </div>
+      </div>
+      <div class="container">
+        <div class="box">
+          <div class="header-box gradient">Cookies</div>
+          <div class="content-box small-text">This extension uses cookies to store data in your browser</div>
+        </div>
+        <div class="box">
+          <div class="header-box gradient">Contact</div>
+          <div class="content-box small-text">qlerolland@outlook.com</div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="box-large">
+            <div class="header-box gradient">Donate electra</div>
+            <div class="content-box">
+              <input id="inputDonate" readonly="true" type="text" value="EZyCWyPKffbaHKbamSCf3nJuWfxda6HGJD">
+            </div>
+          </div>
+      </div>
+    </div>
+    </div>
+    <div id="footer" class="footer gradient">
+      <ul>
+        <li class="left"><img src="/img/electra.svg" width="28px" height="28px" class="icon-white"></li>
+        <li class="left">Fast. Scalable. Low Fees.</li>
+        <li id="info-window" class="right"><i class="icon-info"></i></li>
+      </ul>
+    </div>
+  </body>
+</html>
