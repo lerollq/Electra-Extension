@@ -113,16 +113,16 @@ function setCookieEca()
         window.open('https://electraproject.org/', '_blank').focus();
     });
     $("#wallet-window").click(function(){
-        displayCurrent("wallet-window");
+        displayCurrent("Wallet");
     });
     $("#stats-window").click(function(){
-        displayCurrent("stats-window");
+        displayCurrent("Statistics");
     });
      $("#exchange-window").click(function(){
-        displayCurrent("exchange-window");
+        displayCurrent("Exchanges");
     });
      $("#info-window").click(function(){
-        displayCurrent("info-window");
+        displayCurrent("Info");
     });
     $("#submitWallet").click(function(){
         setCookieEca();
@@ -160,19 +160,6 @@ function getCookie(cname) {
 function displayCurrent(current)
 {
   $currentWindow.hide();
-  switch(current){
-    case "wallet-window":
-     $currentWindow = $("#Wallet");
-      break;
-    case "stats-window":
-     $currentWindow =  $("#Statistics");
-      break;
-    case "exchange-window":
-      $currentWindow =  $("#Exchanges");
-      break;
-    case "info-window":
-      $currentWindow =  $("#Info");
-      break;
-  }
+  $currentWindow = $("#"+current+"");
   $currentWindow.show();
 }
