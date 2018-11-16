@@ -65,3 +65,6 @@
 .icon-instagram:before {
   content: "\61";
 }
+.icon-screenshot:before {
+  content: "\6a";
+}

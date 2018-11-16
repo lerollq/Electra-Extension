@@ -1,20 +1,11 @@
-var data = null;
-var dataEth = null
-var $currentWindow;
 
 $(function () {
-  initApp();
+
+  // $("#moreData").toggle();
   addEventListener();
+  setData();
   getMyWallet();
 });
-
-function initApp(){
-  $("#moreData").toggle();
-  $currentWindow = $("#Statistics");
-  fetchData();
-  setData();
-  setColorChanges();
- }
 
 function getJson(url) {
  return JSON.parse($.ajax({
@@ -29,14 +20,13 @@ function getJson(url) {
  }).responseText);
 }
 
-  function fetchData(){
-      data = getJson("https://api.coinmarketcap.com/v1/ticker/electra/");
-      dataEth = getJson("https://api.coinmarketcap.com/v1/ticker/ethereum/");
-  }
-
   function setData()
   {
+      data = getJson("https://api.coinmarketcap.com/v1/ticker/electra/");
+      dataEth = getJson("https://api.coinmarketcap.com/v1/ticker/ethereum/");
+
       $("#rank").text(data[0]['rank']);
+      var ethPrice = 
       $("#ethPrice").text((parseFloat(data[0]['price_usd'])/parseFloat(dataEth[0]['price_usd'])).toFixed(8));
       $("#usdPrice").text("$"+parseFloat(data[0]['price_usd']).toFixed(6).toLocaleString("en-US"));
       $("#marketCap").text("$"+parseFloat(data[0]['market_cap_usd']).toLocaleString("en-US"));
@@ -48,10 +38,11 @@ function getJson(url) {
       $("#change1h").text(data[0]['percent_change_1h'] + " %");
       $("#change24h").text(data[0]['percent_change_24h']+ " %");
       $("#change7d").text(data[0]['percent_change_7d']+ " %");
+      setColor();
   }
 
 
-  function setColorChanges()
+  function setColor()
   {
       if (parseFloat(data[0]['percent_change_1h']) < 0)
         $("#change1h").addClass("price_down");
@@ -90,10 +81,38 @@ function setCookieEca()
   getMyWallet();
 }
 
+ function download_data_uri(dataURI, fileName) {
+    var tempUrl = make_url_from_data(dataURI);
+    var link = $('<a href="' + tempUrl + '" id="download" download="' + fileName + '" target="_blank"> </a>');
+    $("body").append(link);
+    $("#download").get(0).click();
+  }
 
+  function make_url_from_data(dataURI) {
+    var blob = make_blob(dataURI);
+    var tempUrl = URL.createObjectURL(blob);
+    return tempUrl;
+  }
 
-  function addEventListener()
-  {
+  function make_blob(dataURI) {
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+      byteString = atob(dataURI.split(',')[1]);
+    else
+      byteString = unescape(dataURI.split(',')[1]);
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+    for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    };
+    return new Blob([ab], {
+      type: mimeString
+    });
+  }
+
+  function addEventListener() {
+    $("#stats-window").addClass('active');
     $("#btn-discord").click(function(){
         window.open('https://discordapp.com/invite/B8F7Jdv', '_blank').focus();
     });
@@ -113,24 +132,28 @@ function setCookieEca()
         window.open('https://electraproject.org/', '_blank').focus();
     });
     $("#wallet-window").click(function(){
-        displayCurrent("Wallet");
+        displayCurrent("wallet-window");
     });
     $("#stats-window").click(function(){
-        displayCurrent("Statistics");
+        displayCurrent("stats-window");
     });
      $("#exchange-window").click(function(){
-        displayCurrent("Exchanges");
+        displayCurrent("exchange-window");
     });
      $("#info-window").click(function(){
-        displayCurrent("Info");
+        displayCurrent("info-window");
     });
     $("#submitWallet").click(function(){
         setCookieEca();
     });
-    $("#more").click(function(){
-        $("#moreData").toggle();
-        $(this).toggleClass("change");
-    });
+    $("#btn-screenshot").click(function(){
+      html2canvas(document.body).then(function(canvas) {downloadScreenshot(canvas)})
+      });
+  }
+
+  function downloadScreenshot(canvas){
+        var c = canvas.toDataURL('image/png');
+        download_data_uri(c, "electa-screenshot");      
   }
 
 
@@ -159,7 +182,79 @@ function getCookie(cname) {
 
 function displayCurrent(current)
 {
-  $currentWindow.hide();
-  $currentWindow = $("#"+current+"");
-  $currentWindow.show();
+  switch(current){
+    case "wallet-window":
+      $("#Statistics").hide();
+      $("#Exchanges").hide();
+      $("#Info").hide();
+      $("#Wallet").show();
+      $("#stats-window").removeClass('active');
+      $("#exchange-window").removeClass('active');
+      $("#wallet-window").addClass('active');
+      break;
+    case "stats-window":
+      $("#Wallet").hide();
+      $("#Exchanges").hide();
+      $("#Info").hide();
+      $("#Statistics").show();
+      $("#stats-window").addClass('active');
+      $("#exchange-window").removeClass('active');
+      $("#wallet-window").removeClass('active');
+      break;
+    case "exchange-window":
+      $("#Statistics").hide();
+      $("#Wallet").hide();
+      $("#Info").hide();
+      $("#Exchanges").show();
+      $("#stats-window").removeClass('active');
+      $("#exchange-window").addClass('active');
+      $("#wallet-window").removeClass('active');
+      break;
+    case "info-window":
+      $("#Statistics").hide();
+      $("#Wallet").hide();
+      $("#Exchanges").hide();
+      $("#Info").show();
+      $("#stats-window").removeClass('active');
+      $("#exchange-window").removeClass('active');
+      $("#wallet-window").removeClass('active');
+      break;
+  }
+
+ 
+
+  
+
+}
+
+ImageSaver = {
+  download_data_uri: function(dataURI, fileName) {
+    var tempUrl = ImageSaver.make_url_from_data(dataURI);
+    var link = $('<a href="' + tempUrl + '" id="download" download="' + fileName + '" target="_blank"> </a>');
+    $("body").append(link);
+    $("#download").get(0).click();
+  },
+
+  make_url_from_data: function(dataURI) {
+    var blob = ImageSaver.make_blob(dataURI);
+    var tempUrl = URL.createObjectURL(blob);
+    return tempUrl;
+  },
+
+  make_blob: function(dataURI) {
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+      byteString = atob(dataURI.split(',')[1]);
+    else
+      byteString = unescape(dataURI.split(',')[1]);
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+    for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    };
+    return new Blob([ab], {
+      type: mimeString
+    });
+  }
 }
